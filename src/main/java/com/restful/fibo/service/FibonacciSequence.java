@@ -10,15 +10,15 @@ import java.util.Arrays;
 public class FibonacciSequence {
     public String generateSequence (FibonacciSeed seed) {
 
-        if (seed.getSeed() >= 0) {
-            BigInteger[] seq = new BigInteger[seed.getSeed() + 1];
+        if (seed.getSeed() > 0) {
+            BigInteger[] seq = new BigInteger[seed.getSeed()];
             seq[0] = new BigInteger("0");
             for (int i = 1; i < seq.length; i++) {
                 seq[i] = i == 1 ? seq[i - 1].add(new BigInteger("1")) : seq[i - 1].add(seq[i - 2]);
             }
             return Arrays.toString(seq);
         }
-        throw new IllegalArgumentException("Please supply a non-negative seed.");
+        throw new IllegalArgumentException("Please supply a positive seed.");
 
     }
 }
