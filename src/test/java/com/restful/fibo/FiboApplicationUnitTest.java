@@ -19,7 +19,7 @@ public class FiboApplicationUnitTest {
 	@Test
 	public void testIt () {
 		FibonacciSeed seed = new FibonacciSeed();
-		seed.setSeed(0);
+		seed.setSeed(1);
 
 		String expectedResult = "[0]";
 
