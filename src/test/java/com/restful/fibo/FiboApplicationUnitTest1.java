@@ -11,21 +11,23 @@ import com.restful.fibo.model.FibonacciSeed;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class FiboApplicationUnitTest {
+public class FiboApplicationUnitTest1 {
 
 	@Autowired
 	private FibonacciSequence instance;
 
 	@Test
-	public void testIt () {
+	public void testIt() {
 		FibonacciSeed seed = new FibonacciSeed();
-		seed.setSeed(1);
+		seed.setSeed(5);
 
-		String expectedResult = "[0]";
+		String expectedResult = "[0, 1, 1, 2, 3]";
 
-		if (!instance.generateSequence(seed).equals(expectedResult)) throw new RuntimeException("It's not working");
+
+		if (!instance.generateSequence(seed).equals(expectedResult)) throw new RuntimeException("It's not working: " + " expected result: " + expectedResult + " , actual result: " + instance.generateSequence(seed));
+
+
 	}
-
 }
 
 
