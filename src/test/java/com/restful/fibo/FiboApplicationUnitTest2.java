@@ -6,27 +6,25 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import com.restful.fibo.model.FibonacciSeed;
 
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class FiboApplicationUnitTest2 {
 
-    @Autowired
-    private FibonacciSequence instance;
-
+   
     @Test
     public void testIt () {
-        FibonacciSeed seed = new FibonacciSeed();
-        seed.setSeed(-1);
+
+        FibonacciSequence instance = new FibonacciSequence();
+        instance.setSeed(-1);
 
         String expectedResult = "[1]";
 
         try {
-            if (!instance.generateSequence(seed).equals(expectedResult)) throw new RuntimeException("It's not working: " + " expected result: " + expectedResult + " , actual result: " + instance.generateSequence(seed));
-        } catch (IllegalArgumentException e) {
-            assert e.getMessage().equals("Please supply a positive seed."): "Test failed. Exception text: \"" + e.getMessage() + "\" instead of expected \"Please supply a positive seed.\"";
+            if (!instance.generateSequence().getFibonacciSequence().equals(expectedResult)) throw new RuntimeException("It's not working: " + " expected result: " + expectedResult + " , actual result: " + instance.generateSequence().getFibonacciSequence());
+        } catch (BadSeedException e) {
+            assert e.getMessage().equals("Please supply a positive seed (fibonaccisequence/n>0)."): "Test failed. Exception text: \"" + e.getMessage() + "\" instead of expected \"Please supply a positive seed.\"";
         }
     }
 
